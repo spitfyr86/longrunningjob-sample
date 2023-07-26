@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\longrunningjob-sample\webapi\webapi.csproj" />
+    <ProjectReference Include="..\webapi\webapi.csproj" />
   </ItemGroup>
 
 </Project>

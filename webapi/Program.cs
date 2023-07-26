@@ -56,6 +56,7 @@ builder.Services.AddSwaggerGen(options => {
     });
 });
 
+builder.Services.AddMemoryCache();
 builder.Services.AddDbContext<DbContextClass>();
 
 var jwtConfiguration = builder.Configuration.GetSection("JWT");

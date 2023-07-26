@@ -4,6 +4,6 @@ namespace webapi.Services.Interfaces
 {
     public interface IJobService
     {
-        Task ProcessTextAsync(string text);    // simulates running of jobs
+        Task<int> ProcessTextAsync(string text, CancellationToken cancellationToken);    // simulates running of jobs
     }
 }

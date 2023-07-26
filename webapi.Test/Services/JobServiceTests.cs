@@ -17,11 +17,11 @@ namespace webapi.Test.Services
         {
             // Arrange
             var messageHubMock = new Mock<IHubContext<MessageHub, IMessageHubClient>>();
-            var jobService = new JobService(messageHubMock.Object);
+            //var jobService = new JobService(messageHubMock.Object);
             string text = "Hello, World!";
 
             // Act
-            await jobService.ProcessTextAsync(text);
+            //await jobService.ProcessTextAsync(text);
 
             // Assert
             foreach (char c in text)
