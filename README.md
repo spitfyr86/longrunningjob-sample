@@ -30,3 +30,20 @@ Additional requirements:
 	- `docker-compose up`
 5. Open a browser and go to [localhost:4200](http://localhost:4200)
 	
+
+## Example of the app functioning:
+input = "**Hello, World!**". Generated base64="**SGVsbG8sIFdvcmxkIQ==**"
+
+What web client receives from the server:
+- Random pause… "**S"**
+Random pause… "**G**"
+Random pause… "**V**"
+Random pause… "**s**"
+Etc.
+
+What does user see in the result text field on web UI:
+- Random pause… "**S**"
+Random pause… "**SG**"
+Random pause… "**SGV**"
+Random pause… "**SGVs**"
+Etc.
