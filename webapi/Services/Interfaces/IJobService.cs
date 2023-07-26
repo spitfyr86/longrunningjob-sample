@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace webapi.Services
+namespace webapi.Services.Interfaces
 {
     public interface IJobService
     {

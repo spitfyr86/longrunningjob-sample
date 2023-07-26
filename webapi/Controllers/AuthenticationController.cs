@@ -6,6 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using webapi.Models;
+using webapi.Services.Interfaces;
 
 namespace webapi.Controllers
 {
@@ -13,38 +14,25 @@ namespace webapi.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        private readonly IConfiguration _config;
+        private readonly IAuthenticationService _authService;
 
-        public AuthenticationController(IConfiguration config)
+        public AuthenticationController(IAuthenticationService authService)
         {
-            _config = config;
+            _authService = authService;
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginModel user)
+        public async Task<IActionResult> Login([FromBody] LoginModel user)
         {
             if (user is null)
             {
-                return BadRequest("Invalid user request!!!");
+                return BadRequest("Invalid credentials");
             }
 
             if (user.UserName == "admin" && user.Password == "admin")
             {
-                var jwtConfiguration = _config.GetSection("JWT");
-                var jwtSecret = jwtConfiguration["Secret"];
-                var jwtIssuer = jwtConfiguration["ValidIssuer"];
-                var jwtAudience = jwtConfiguration["ValidAudience"];
+                var tokenString = await _authService.GenerateTokenAsync();
 
-                var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret));
-                var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-                var tokeOptions = new JwtSecurityToken(
-                                    issuer: jwtIssuer,
-                                    audience: jwtAudience,
-                                    claims: new List<Claim>(),
-                                    expires: DateTime.Now.AddMinutes(6),
-                                    signingCredentials: signinCredentials);
-
-                var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
                 return Ok(new JWTTokenResponse
                 {
                     Token = tokenString

@@ -5,6 +5,7 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using webapi.Data;
 using webapi.Services;
+using webapi.Services.Interfaces;
 using webapi.SignalR;
 
 // create builder
@@ -81,6 +82,7 @@ builder.Services.AddAuthentication(opt => {
 // IoC
 builder.Services.AddScoped<ITextEncoder, Base64Encoder>();
 builder.Services.AddScoped<IJobService, JobService>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
 var app = builder.Build();
 // -----------------------------------------------------------------------------------------------------
@@ -100,10 +102,12 @@ app.UseCors("CORSPolicy");
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+#pragma warning disable ASP0014 // Suggest using top level route registrations
 app.UseEndpoints(endpoints => {
     endpoints.MapControllers();
-    endpoints.MapHub<MessageHub>("/encodeText");
+    endpoints.MapHub<MessageHub>("/encodeText");        // URL to listen for SignalR requests handling
 });
+#pragma warning restore ASP0014 // Suggest using top level route registrations
 app.UseHttpsRedirection();
 app.MapControllers();
 

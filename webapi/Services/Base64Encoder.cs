@@ -1,4 +1,6 @@
-﻿namespace webapi.Services
+﻿using webapi.Services.Interfaces;
+
+namespace webapi.Services
 {
     public class Base64Encoder : ITextEncoder
     {

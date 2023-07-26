@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using System.Collections;
+using webapi.Services.Interfaces;
 using webapi.SignalR;
 
 namespace webapi.Services
