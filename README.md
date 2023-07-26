@@ -1,5 +1,4 @@
 # Angular + .Net Core Web API + Docker containerization
-This is a sample app demonstrating handling of a long running job.
 
 General idea of the app: Simulate a hard processing work of the input data items given by user.
 Bare minimum requirements:
@@ -19,3 +18,15 @@ Additional requirements:
 5. Server-side app should be hosted in Linux Docker container
 6. Host API & UI backend in different containers
 7. Support basic authentication using nginx in another container
+
+
+## Installation
+
+1. Install Docker Desktop.
+2. Clone the repository.
+3. Run command below to build the images.
+	- `docker-compose build`
+4. Run command below to create and run the containers from the created images.
+	- `docker-compose up`
+5. Open a browser and go to [localhost:4200](http://localhost:4200)
+	
