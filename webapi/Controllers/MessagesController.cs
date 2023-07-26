@@ -63,10 +63,10 @@ namespace webapi.Controllers
                 cancellationTokenSource.Dispose();
                 _memoryCache.Set(CacheKeys.EncodeRequest, cancellationTokenSource);
 
-                return Ok("Long-running task canceled.");
+                return Ok("Process canceled.");
             }
 
-            return BadRequest("The task is not running or already canceled.");
+            return BadRequest("The process is not running or already canceled.");
         }
 
     }

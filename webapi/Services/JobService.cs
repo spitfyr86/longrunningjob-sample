@@ -31,8 +31,7 @@ namespace webapi.Services
                     cancellationToken.ThrowIfCancellationRequested();
                     Thread.Sleep(second * 1000);
 
-                    var 
-                        cancellationTokenSource = _memoryCache.Get<CancellationTokenSource>(CacheKeys.EncodeRequest);
+                    var cancellationTokenSource = _memoryCache.Get<CancellationTokenSource>(CacheKeys.EncodeRequest);
 
                     // Check if the process is running and not canceled
                     if (cancellationTokenSource != null && !cancellationTokenSource.IsCancellationRequested)
@@ -40,8 +39,6 @@ namespace webapi.Services
                         await _messageHub.Clients.All.SendEncodedMessageAsync(c);
                     }
                 }
-
-                return text.Length;     // return above gt 0 count indicating success
             }
             catch (OperationCanceledException)
             {
@@ -59,6 +56,8 @@ namespace webapi.Services
             {
                 _memoryCache.Remove(CacheKeys.EncodeRequest);
             }
+
+            return text.Length;     // return above gt 0 count indicating success
         }
     }
 }

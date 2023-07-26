@@ -17,7 +17,7 @@ namespace webapi.Test.Services
         public async Task GenerateTokenAsync_ShouldReturnValidJwtToken()
         {
             // Arrange
-            var jwtSecret = "mySecretKey";
+            var jwtSecret = "my_secret_128_bit_KEY";
             var jwtIssuer = "myIssuer";
             var jwtAudience = "myAudience";
 
@@ -49,7 +49,7 @@ namespace webapi.Test.Services
             }, out _);
 
             Assert.True(claimsPrincipal.Identity.IsAuthenticated);
-            Assert.Empty(claimsPrincipal.Claims);
+            Assert.NotEmpty(claimsPrincipal.Claims);
         }
 
         [Fact]
@@ -60,7 +60,7 @@ namespace webapi.Test.Services
             var authenticationService = new AuthenticationService(configurationMock.Object);
 
             // Act & Assert
-            await Assert.ThrowsAsync<ArgumentException>(() => authenticationService.GenerateTokenAsync());
+            await Assert.ThrowsAsync<ArgumentNullException>(() => authenticationService.GenerateTokenAsync());
         }
     }
 }

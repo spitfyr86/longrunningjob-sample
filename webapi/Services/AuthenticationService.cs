@@ -18,13 +18,18 @@ namespace webapi.Services
         public Task<string> GenerateTokenAsync()
         {
             var jwtConfiguration = _config.GetSection("JWT");
+            if (jwtConfiguration == null)
+            {
+                throw new ArgumentNullException("JWT configuration is missing.");
+            }
+
             var jwtSecret = jwtConfiguration["Secret"];
             var jwtIssuer = jwtConfiguration["ValidIssuer"];
             var jwtAudience = jwtConfiguration["ValidAudience"];
 
             if (jwtSecret == null || jwtIssuer == null || jwtAudience == null)
             {
-                throw new ArgumentException("JWT attributes cannot be null.");
+                throw new ArgumentNullException("JWT attributes cannot be null.");
             }
 
             var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret));
