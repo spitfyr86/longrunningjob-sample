@@ -1,0 +1,17 @@
+<div class="header-container" [class.left]="position === 'normal'" [class.right]="position === 'inverse'">
+    <div class="logo-containter">
+
+      <a (click)="toggleSidebar()" href="#" class="sidebar-toggle" *ngIf="!isHomePage">
+        <nb-icon icon="menu-2-outline"></nb-icon>
+      </a>
+
+  
+    </div>
+    
+    <div class="item text-heading" (click)="goToHome()">
+        <img class="header-img" src="/assets/img/theme/btg/btg_logo.png" />
+      </div>
+  </div>
+  
+  <ngx-identity></ngx-identity>
+  

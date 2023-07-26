@@ -1,0 +1,20 @@
+
+<nb-actions size="medium" fullWidth>
+  <nb-action *ngIf="!authenticated">
+    <a class="nav-link d-link" (click)="goToMessageEncoder()">
+      <nb-icon class="action-icon" icon="log-in"></nb-icon>
+      <span>Sign in</span>
+    </a>
+  </nb-action>
+
+  <nb-action *ngIf="authenticated">
+    <a class="nav-link d-link" (click)="goToMessageEncoder()">
+      <nb-icon class="action-icon" icon="file-text-outline"></nb-icon>
+      <span>Encoder</span>
+    </a>
+  </nb-action>
+
+  <nb-action *ngIf="authenticated">
+    <nb-user [nbContextMenu]="userMenu" [name]="name"></nb-user>
+  </nb-action>
+</nb-actions>

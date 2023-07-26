@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#" routerLink="/">Home</a>
+  <a class="navbar-brand" href="#" (click)="LogOut()">Logout</a>
+  <div *ngIf="!authenticated">
+    <a class="navbar-brand" routerLink="/message">Encode Message</a>
+  </div>
+  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button> -->
+  <!-- <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" (click)="logOut()">Logout</a>
+      </li>
+      <li *ngIf="!isUserAuthenticated()" class="nav-item active">
+        <a class="nav-link" routerLink="/message">Encode Message</a>
+      </li>
+    </ul>
+  </div> -->
+</nav>
+
+<!-- <form class="form-horizontal" [formGroup]="messageForm"> -->
+<form class="form-horizontal" [formGroup]="messageForm">
+  <br>
+  <h1 style="text-align: center;">Online Base64 Encoder</h1>
+  <div>
+    <nb-card [nbSpinner]="isProcessing" nbSpinnerSize="giant" nbSpinnerStatus="primary" style="border: none;">
+      <div class="form-group center">
+        <label class="control-label col-sm-2">Message:</label>
+        <div class="col-sm-12">
+          <textarea type="text" class="form-control" id="txtMessage" formControlName="messageText"
+            placeholder="Enter text you'd like to encode" ng-disabled="isProcessing">
+          </textarea>
+        </div>
+      </div>
+    </nb-card>
+    <br />
+    <div class="form-group">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm" style="text-align: center" *ngIf="!isProcessing">
+            <button type="submit" class="btn btn-primary" (click)="ConvertMessage()">Convert</button>
+          </div>
+          <div class="col-sm" style="text-align: center" *ngIf="isProcessing">
+            <button type="submit" class="btn btn-primary btn-clear" (click)="Cancel()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="form-group center">
+      <div class="col-sm-12">
+        <label class="control-label col-sm-2">Encoded Message:</label>
+        <div class="col-sm-12">
+          <h6>{{ encodedMsg }}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

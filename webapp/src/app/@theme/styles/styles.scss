@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
+
+// themes - our custom or/and out of the box themes
+@import 'themes';
+
+// framework component themes (styles tied to theme variables)
+@import '~@nebular/theme/styles/globals';
+@import '~@nebular/auth/styles/globals';
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/grid';
+
+// loading progress bar theme
+@import './pace.theme';
+
+@import './layout';
+@import './overrides';
+// install the framework and custom global styles
+
+// framework global styles
+@include nb-theme-global();
+
+// loading progress bar
+@include ngx-pace-theme();
+
+// @import 'bs-overrides';
+// themes - our custom or/and out of the box themes
+@import '~@angular/material/theming';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
+@include mat-core();
+
+// Define the theme.
+$wps-app-primary: mat-palette($mat-indigo);
+$wps-app-accent:  mat-palette($mat-pink, A200, A100, A400);
+$wps-app-theme:   mat-light-theme($wps-app-primary, $wps-app-accent);
+
+// Include the theme styles for only specified components.
+@include mat-button-theme($wps-app-theme);
+
+// install the framework and custom global styles
+@include nb-install() {
+
+  // framework global styles
+  @include nb-theme-global();
+  @include nb-auth-global();
+
+  @include ngx-layout();
+  // loading progress bar
+  @include ngx-pace-theme();
+
+  @include nb-overrides();
+};
+nb-menu ul.menu-items .menu-item a {
+    display: block;
+    .menu-icon {
+        vertical-align: middle;
+    }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+nb-menu .menu-item .chevron {
+    width: 58%;
+    text-align: right;
+}

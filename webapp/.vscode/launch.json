@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch localhost in Microsoft Edge",
+            "type": "msedge",
+            "request": "launch",
+            "url": "http://localhost:4200",
+            "sourceMaps": true,
+            "webRoot": "${workspaceFolder}/wwwroot"
+        },
+        {
+            "name": "Launch index.html in Microsoft Edge",
+            "type": "msedge",
+            "request": "launch",
+            "sourceMaps": true,
+            "file": "${workspaceFolder}/index.html"
+        },
+    ]
+}

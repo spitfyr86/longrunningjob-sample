@@ -1,0 +1,40 @@
+.bs-alert {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 16px;
+    overflow: hidden;
+    min-width: 0px;
+    min-height: 0px;
+    z-index: 2050;
+    
+    .alert {
+        border: 1px solid #ebeef2;
+        box-shadow: 0 2px 12px 0 #dfe3eb;
+        position: relative;
+        width: 300px;
+        padding: 24px 16px;
+        border-radius: 2px;
+        transition: all 0.3s ease-out;
+        p {
+            display: flex;
+            margin-bottom: 0px;
+
+            > i {
+                font-size: 1.5rem;
+                margin-right: 0.5rem;
+                margin-top: -0.5rem;
+            }
+        }
+        .close {
+            margin-right: -0.4rem;
+            margin-top: -0.9rem;
+            font-weight: 100;
+            line-height: 0.8;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+}

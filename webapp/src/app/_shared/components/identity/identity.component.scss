@@ -1,0 +1,215 @@
+@import '../../../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+
+
+@include nb-install-component() {
+
+    .buttons-row {
+        margin: -0.5rem;
+    }
+
+    button[nbButton] {
+        margin: 0.5rem;
+    }
+
+    .action-icon {
+        font-size: medium;
+        margin-right: 0.5rem;
+    }
+
+    .actions-card {
+        height: 8rem;
+    }
+
+    display: flex; //   justify-content: space-between;  
+    justify-content: flex-end;
+    width: 100%;
+
+    a {
+        cursor: pointer;
+    }
+
+    .web-view {
+        display: contents;
+    }
+
+    .mobile-view {
+        display: none;
+    }
+
+    .dropdown {
+        margin-top: 0.5rem;
+    }
+
+    .dropdown-menu {
+        cursor: pointer;
+    }
+
+    .left {
+        display: flex;
+        width: 100%;
+        order: 0;
+        flex-direction: row;
+    }
+
+    .right {
+        order: 1;
+        flex-direction: row-reverse;
+    }
+
+    .logo-containter {
+        display: flex;
+        align-items: center;
+    }
+
+    .control-item {
+        display: block;
+    }
+
+    .header-container {
+        display: flex;
+        width: 100%;
+
+        .navigation {
+            //   padding-right: 1.25rem;
+            font-size: 2.5rem;
+            text-decoration: none;
+
+            i {
+                display: block;
+            }
+        }
+
+        .logo {
+            //   padding: 0 1.25rem;
+            font-size: 1.75rem;
+            font-weight: bolder;
+            border-left: 1px solid #cdd5dc;
+            white-space: nowrap;
+
+            span {
+                font-weight: normal;
+            }
+        }
+    }
+
+    .toggle-layout ::ng-deep a {
+        display: block;
+        text-decoration: none;
+        line-height: 1;
+
+        i {
+            color: #2E86AB;
+            font-size: 2.25rem;
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        nb-action:not(.toggle-layout) {
+            border: none;
+        }
+
+        .control-item {
+            display: none;
+        }
+
+        .toggle-layout {
+            padding: 0;
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        nb-user ::ng-deep .user-name {
+            display: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .web-view {
+            display: none;
+        }
+
+        .mobile-view {
+            display: -webkit-inline-box;
+            justify-content: flex-end;
+
+            .btn.btn-tn {
+                padding: 0.5rem !important;
+            }
+
+            .btn-icon {
+                background: none;
+                color: #182B3A;
+            }
+
+            .dropdown-menu {
+                top: 59px !important;
+                left: 1rem !important;
+                // color: #182B3A;
+                // border: 2px solid #182B3A;
+                border-radius: .375rem;
+            }
+
+            .dropdown-item {
+                padding: 0.75rem 1rem !important;
+            }
+        }
+    }
+
+    @include media-breakpoint-down(is) {
+        .header-container {
+            .logo {
+                font-size: 1.25rem;
+            }
+        }
+
+        .toggle-layout {
+            display: none;
+        }
+
+        nb-action:not(.toggle-layout) {
+            padding: 0;
+        }
+    }
+
+    @include media-breakpoint-down(xs) {
+        .right ::ng-deep {
+            display: none;
+        }
+    }
+}
+
+nb-actions {
+    justify-content: flex-end !important;
+}
+
+.d-link {
+    text-decoration: none;
+    min-width: 8.5rem !important;
+}
+
+.d-link-alt {
+    text-decoration: none;
+}
+
+.btn {
+    cursor: pointer !important;
+}
+
+:host ::ng-deep nb-user .user-context-menu {
+    border: 2px solid #182B3A;
+}
+
+:host ::ng-deep nb-user .user-context-menu ul>li.arrow {
+    border-bottom: 11px solid #182B3A !important;
+}
+
+:host ::ng-deep nb-user .user-name {
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+:host ::ng-deep ngbdropdownmenu {
+    left: 0px !important;
+}

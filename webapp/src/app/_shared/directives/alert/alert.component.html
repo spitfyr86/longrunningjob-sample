@@ -1,0 +1,15 @@
+<div class="bs-alert" *ngIf="alerts?.length > 0">
+    <div *ngFor="let alert of alerts; let idx = index" class="{{ cssClass(alert) }} alert-dismissable fade show">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="removeAlert(alert)">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <p>
+            <i *ngIf="alert.type === 0" class="ion-android-done"></i>
+            <i *ngIf="alert.type === 1" class="ion-android-alert"></i>
+            <i *ngIf="alert.type === 2" class="ion-ios-information"></i>
+            <i *ngIf="alert.type === 3" class="ion-android-warning"></i>
+            <span class="pr-2">{{alert.message}}</span>
+        </p>
+
+    </div>
+</div>
